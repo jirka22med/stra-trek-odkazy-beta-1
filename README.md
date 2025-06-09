@@ -1,0 +1,1 @@
+# stra-trek-odkazy-beta-1

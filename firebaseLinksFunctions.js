@@ -40,18 +40,18 @@ window.initializeFirebaseLinksApp = async function() {
             db = firebase.firestore(app); // Získat instanci Firestore z konkrétní aplikace
             console.log("firebaseLinksFunctions.js: Firestore databáze připravena pro databázi odkazů.");
             // Povolit offline persistenci, pokud chcete, aby data byla dostupná i offline
-            // try {
-            //     await db.enablePersistence();
-            //     console.log("firebaseLinksFunctions.js: Offline persistence povolena pro databázi odkazů.");
-            // } catch (err) {
-            //     if (err.code === 'failed-precondition') {
-            //         console.warn("firebaseLinksFunctions.js: Offline persistence není podporována v tomto prohlížeči nebo už se používá na jiném tabu.");
-            //     } else if (err.code === 'unimplemented') {
-            //         console.warn("firebaseLinksFunctions.js: Prohlížeč nepodporuje offline persistence.");
-            //     } else {
-            //         console.error("firebaseLinksFunctions.js: Chyba při povolování offline persistence:", err);
-            //     }
-            // }
+              try {
+                  await db.enablePersistence();
+                 console.log("firebaseLinksFunctions.js: Offline persistence povolena pro databázi odkazů.");
+              } catch (err) {
+                 if (err.code === 'failed-precondition') {
+                     console.warn("firebaseLinksFunctions.js: Offline persistence není podporována v tomto prohlížeči nebo už se používá na jiném tabu.");
+              } else if (err.code === 'unimplemented') {
+                      console.warn("firebaseLinksFunctions.js: Prohlížeč nepodporuje offline persistence.");
+                 } else {
+                     console.error("firebaseLinksFunctions.js: Chyba při povolování offline persistence:", err);
+                 }
+              }
         }
 
         console.log("firebaseLinksFunctions.js: Konfigurační objekt Firebase načten a připraven.");
